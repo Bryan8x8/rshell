@@ -19,6 +19,10 @@ class Packager {
     vector<Package> returnPackageVector();
     void displayCmdVector();
     Package returnPackage(int);
+    bool detectParen(string); //this exists to tell us if there are proper parenthesis within the input
+    string parseParen(string);
+    string parenCmdParse(string);
+    string removeWhiteSpace(string);
 }; 
 
 #endif
