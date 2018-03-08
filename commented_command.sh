@@ -8,4 +8,6 @@ echo test || #nothing
 #nothing should && happen
 echo testing && echo testing2 #nothing
 #terminate
-
+#echo a
+#(echo a)
+(echo a) #should not show up
