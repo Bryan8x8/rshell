@@ -10,3 +10,6 @@ echo hello world > testfile
 cat testfile
 echo '\n'
 echo bug detected!
+(echo a)
+[ -f rshell.cpp]
+(ls)
