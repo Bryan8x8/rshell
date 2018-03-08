@@ -6,4 +6,7 @@ echo one && echo two && echo three && echo four || echo should not print
 afd || vfvf || pwd && echo this should print
 echo should print || echo should not print && echo should also print
 nothing || nothing || nothing || echo testing chain of ORs
-
+(echo a && echo b) || (echo c && echo d)
+(echo a && echo b) && (echo c && echo d)
+(echo a) && echo b
+[ -f rshell.cpp ] && echo a
