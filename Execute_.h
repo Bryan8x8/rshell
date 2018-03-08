@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
 #include <unistd.h>
 #include <cstdlib>
 #include "Package_.h"
@@ -34,7 +35,11 @@ class Execute{
         //This function is critical to the exit process, it will return a true value if it detects that the 'terminate' command has been entered.
         string returnCommand(int); //this returns a string from within the holdCommand vector
         bool executePackage(); //no functionlity implemented yet
-
+        bool executeSingle(string);
+       // bool executeTest(int, string , char);
+       // bool stat(int, char*argv[], char);
+       bool runTest(string);
+       bool checkTest(string);
+       bool check_stat(int, char*argv[], char);
 };
-
 #endif
