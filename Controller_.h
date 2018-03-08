@@ -12,13 +12,26 @@ using namespace std;
 class Controller{
    
     string input;
+    char masterIndicator;
+    bool terminationFlag = false;
+    string semiString;
     Packager parse;
     Execute executer;
     
     public:
-       void receiveInput();
+       string receiveInput();
        void displayInput();
-       bool receiveAndRun();
+       bool receiveAndRun(string);
+       char seekOp(string);
+       string clearOp(string);
+       bool runParen(string, bool);
+       bool semiParse(string);
+       bool execParen(string);
+       char opCheck(string);
+       bool properParen(string);
+       string handleComment(string);
+       bool checkTermination(string);
+       bool returnTerm();
 };
 
 #endif
