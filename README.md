@@ -1,4 +1,6 @@
-# assignment2
+# assignment3
+
+IMPORTANT: I have no idea why but throughout the controller_.cpp I have placed random conditionals that literally do NOTHING but for somereason the code refuses to funtion without them, I spent 4 days trying to figure out what was wrong until I noticed by chance that only after the use of these conditionals does the code work. 
 
 In this assignment, please finish two things:
 
@@ -23,7 +25,7 @@ Packager Class: This class is designed to take an input string and parse through
 
 Executer Class: This class receives a vector of packages from the Packager class and performs a final parse and clean up of the commands prior to execution. This final parse is crucial as it will identify whether the user has passed the terminate shell function. This class is also resposible for executing the user commands and determining whether or not commands should be executed based on the connectors that were passed.
 
-Controller: This class is essentially the conductor, it takes the functionality of the Package, Packager, and Executer class and calls commands in the order required to run rshell. The controller contains a single function, receiveAndRun which will receive and execute input and  return a true boolean value if the user passes a 'terminate' command.
+Controller: Big changes have been made to this class, it now dictates the flow of information and handles nearly all of the parsing, package has become obsolete as our rshell now handles vectors.
 
 rShell.cpp: this file creates a container and continously loops its receiveAndRun function until it returns a true value.
 
