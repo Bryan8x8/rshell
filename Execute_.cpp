@@ -376,6 +376,10 @@ bool Execute::runTest(string inp)
         const char *argv[] = {superCool.c_str()}; 
         masterBool = check_stat(2,(char**)argv,flagChar);
     }
+    if(masterBool == false)
+    {
+        cout << "(FALSE)" << endl;
+    }
     return masterBool;
 }
 
@@ -402,28 +406,47 @@ bool Execute::check_stat(int argc, char* argv[], char flagInput)
     switch (sb.st_mode & S_IFMT){       //switch cases for file type
         case S_IFDIR: 
             //cout << "directory" << endl;
-            if(flagInput == 'd')
+            if((flagInput == 'd') || (flagInput == 'e'))
             {
+                //cout << "(TRUE)" <<endl;
                 mainBool = true;
-                return mainBool;
+              //  return mainBool;
             }  
+            else
+            {
+               // cout << "(FALSE)" <<endl;
+            }
             break;     //return true if file is a directory
         case S_IFREG:  
             //cout << "reg file" << endl;
-            if(flagInput == 'f')
+            if((flagInput == 'f') || (flagInput == 'e'))
             {
+                //cout << "(TRUE)" <<endl;
                 mainBool = true;
-                return mainBool;
-            }   
+                //return mainBool;
+            }  
+            else 
+            {
+               // cout << "(FALSE)" <<endl;
+            }
             break;     //return true if its a regular file
         default:    
             //cout << "exists" <<endl;
-            if((flagInput == 'e') || (flagInput == 'f') || (flagInput == 'd'))
-            {
+            //    cout << "(TRUE)" << endl;
                 mainBool = true;
-                return mainBool;
-            }  
+                //return mainBool;
             break;     //default -e case, file exist
+        
+    }
+    
+    //cout << "(FALSE)" << endl;
+    if(mainBool)
+    {
+        cout << "(TRUE)" << endl;
+    }
+    else
+    {
+        cout << "(FALSE)" << endl;
     }
     //cout << mainBool << endl;
     return mainBool;
