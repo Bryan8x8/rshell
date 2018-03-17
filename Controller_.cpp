@@ -160,6 +160,13 @@ bool Controller::runParen(string input1, bool flag)
         {
             testBool = executer.runTest(tempString);
         }
+        else if((detectRedirection(tempString)) && (!terminationFlag))
+        {
+            //cout << "hit more redirection" << endl;
+            if(tempString == "blackmagic"){}
+            //cout << tempString << endl;
+            redirect.runRedirection(tempString);
+        }
         else
         {
             if(!terminationFlag){
@@ -222,12 +229,19 @@ bool Controller::runParen(string input1, bool flag)
                 //cout <<tempString<<endl;
                 if((executer.checkTest(tempString)) && (!terminationFlag)){
                     testBool = executer.runTest(tempString);
+                }//we should be able to include an else if here for our redirection cases.
+                else if((detectRedirection(tempString)) && (!terminationFlag))
+                {
+                    //cout << "detected redirection, this is currently neutral and does not return bool values" << endl;
+                    if(tempString == "blackmagic"){}
+                    //cout << tempString << endl;
+                    redirect.runRedirection(tempString);
                 }
                 else{
-                if(!terminationFlag){
-                //cout << tempString<<endl;
-                testBool = executer.executeSingle(tempString);
-                }
+                    if(!terminationFlag){
+                    //cout << tempString<<endl;
+                    testBool = executer.executeSingle(tempString);
+                    }
                 }
             }
             if(tempString.length() == 0)
@@ -399,3 +413,19 @@ bool Controller::checkTermination(string evenMoreInput)
 bool Controller::returnTerm(){
     return terminationFlag;
 }
+
+bool Controller::detectRedirection(string testInput)
+{
+    bool breakBool = false;
+    int i = 0;
+    while((!breakBool) && (i<testInput.length()))
+    {
+        if(((testInput[i] == '|') || (testInput[i] == '<') || (testInput[i] == '>')))
+        {
+            breakBool = true;
+        }
+        i++;
+    }
+    return breakBool;
+}
+
