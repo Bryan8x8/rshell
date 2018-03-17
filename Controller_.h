@@ -6,6 +6,7 @@
 #include "Packager_.h"
 #include "Execute_.h"
 #include "Package_.h"
+#include "Redirection_.h"
 
 using namespace std;
 
@@ -17,6 +18,7 @@ class Controller{
     string semiString;
     Packager parse;
     Execute executer;
+    Redirection redirect;
     
     public:
        string receiveInput();
@@ -32,6 +34,7 @@ class Controller{
        string handleComment(string);
        bool checkTermination(string);
        bool returnTerm();
+       bool detectRedirection(string);
 };
 
 #endif
